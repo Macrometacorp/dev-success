@@ -145,9 +145,28 @@ const readData = async function() {
     console.log(e.response.body);
   }
 };
+const cloneGraph = async function() {
+  const graphs = await client1.getGraphs();
+  try {
+    for (let i of graphs) {
+      const graph = await client1.getGraph(i.name);
+      const hasGraph = await client2.hasGraph(i.name);
+      if (hasGraph != true) {
+        const newGraph = client2.graph(i.name);
+        const info = await newGraph.create({ edgeDefinitions: graph.edgeDefinitions });
 
+        console.log(`"${i.name}" graph is created!`);
+      } else {
+        console.log(`"${i.name}" is alredy in "${pasteFabric}" GeoFabric`);
+      }
+    }
+  } catch (e) {
+    console.log("Graph cant be created", e);
+    console.log(e.response.body);
+  }
+};
 const runInSeries = async () => {
-  const list = [deleteAllCollections, cloneCollections, cloneIndexes, readData];
+  const list = [deleteAllCollections, cloneCollections, cloneIndexes, readData,cloneGraph];
   for (const fn of list) {
     await fn(); // call function to get returned Promise
   }
