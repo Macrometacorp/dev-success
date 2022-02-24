@@ -13,3 +13,5 @@ Supported type of indexes:
 2. TTL
 3. GEO
 4. Persistent
+
+Script support Graph cloning.
