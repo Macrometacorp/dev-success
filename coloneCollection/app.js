@@ -4,7 +4,7 @@ const collectionName = "nameOfCollection" //INPUT name of collection that you wa
 const copyFabric = "_system"; //Collection location fabric
 const pasteFabric = "nameOfFabric";   // Collection destination fabric
 const url = "https://gdn.paas.macrometa.io/";  //Federation URL
-const apiKey = ""
+const apiKey = "" //IPUT API key
 const client1 = new jsc8({
   url,
   apiKey,
