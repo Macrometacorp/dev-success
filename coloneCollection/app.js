@@ -1,10 +1,13 @@
 const jsc8 = require("jsc8");
 
-const collectionName = "nameOfCollection" //INPUT name of collection that you want to clone
-const copyFabric = "_system"; //Collection location fabric
-const pasteFabric = "nameOfFabric";   // Collection destination fabric
+//Variables
+const collectionName = "nameOfCollection" //The name of the collection that you want to clone
+const copyFabric = "_system"; //The name of the fabric where the collection is located
+const pasteFabric = "nameOfFabric";   // The name of the fabric where the collection is going to be cloned
 const url = "https://gdn.paas.macrometa.io/";  //Federation URL
-const apiKey = "" //IPUT API key
+const apiKey = "APIkey" //Input API key
+
+//Create a connection to gdn
 const client1 = new jsc8({
   url,
   apiKey,
@@ -16,7 +19,8 @@ const client2 = new jsc8({
   fabricName: pasteFabric,
 });
 
-const cloneCollections = async function() {
+//
+const cloneCollection = async function() {
     const i = await client1.getCollection(collectionName)
     try {
         if (i.collectionModel === "DOC") {
@@ -35,14 +39,12 @@ const cloneCollections = async function() {
             `"${i.name}" DYNAMO collection is not cloned, there is no driver support for this type of collection`
           );
         } else {
-          console.log("I dont know this type");
+          console.log("I don't know this type of collection");
         }
       
-      console.log("Collection cloning process id DONE");
+      console.log("Collection cloning process is DONE");
     } catch (e) {
-      console.log(
-        "Somthing went wrong with collection cloning requst, please make sure that destination fabric dont have collection with same name"
-      );
+      console.log("Something went wrong with the collection cloning request; please ensure that destination fabric doesn't have a collection with the same name.");
       console.log(e.response.body);
     }
   };
@@ -60,7 +62,7 @@ const cloneCollections = async function() {
         const num1 = Math.ceil(count / batchSize);
   
         for (a = 0; a < num1; a++) {
-          //We change the offset for each iteration
+          //Changing the offset for each iteration
           let offset = a * batchSize;
           query = `FOR doc IN ${name} limit ${offset}, ${batchSize} return doc`;
           const cursor = await client1.query(query, {}, { batchSize: batchSize });
@@ -72,7 +74,7 @@ const cloneCollections = async function() {
         data = [];
       console.log("Data is loaded");
     } catch (e) {
-      console.log("Data cant be loaded");
+      console.log("Data cannot be loaded");
       console.log(e.response.body);
     }
     try {
@@ -93,9 +95,9 @@ const cloneCollections = async function() {
 
         
     }
-      console.log("Data is cloned to new fabric");
+      console.log("Data were cloned to new fabric");
     } catch (e) {
-      console.log("There is error in data cloning process");
+      console.log("There is an error in the data cloning process");
       console.log(e);
     }
   };
@@ -110,7 +112,6 @@ const cloneIndexes = async function() {
         }
       }
     
-    //console.log(arr);
     try {
       for (let i of arr) {
         if (i.type === "fulltext") {
@@ -131,16 +132,16 @@ const cloneIndexes = async function() {
           });
         }
       }
-      console.log("Index cloning process is DONE!");
+      console.log("The indexes cloning process is DONE.!");
     } catch (e) {
-      console.log("Something went wrong with index cloning process");
+      console.log("Something went wrong with the indexes cloning process.");
       console.log(e.response.body);
     }
   };
   
   const runInSeries = async () => {
     const list = [
-      cloneCollections,
+      cloneCollection,
       cloneIndexes,
       cloneData,
     ];
