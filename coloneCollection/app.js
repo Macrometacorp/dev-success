@@ -4,7 +4,7 @@ const jsc8 = require("jsc8");
 const collectionName = "nameOfCollection" //The name of the collection that you want to clone
 const copyFabric = "_system"; //The name of the fabric where the collection is located
 const pasteFabric = "nameOfFabric";   // The name of the fabric where the collection is going to be cloned
-const url = "https://gdn.paas.macrometa.io/";  //Federation URL
+const url = "";  //Federation URL for example https://gdn.paas.macrometa.io/
 const apiKey = "APIkey" //Input API key
 
 //Create a connection to gdn
