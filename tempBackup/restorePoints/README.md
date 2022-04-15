@@ -20,12 +20,12 @@ There is two way to user restore fabric:
 # How to run app.js
 ## Config Variables need to be entered in the app.js script before running:
 
-apiKey1 - API key of the source tenant
-apiKey2 - API key of the destination tenant
-apiKey2ID - ID of apiKey2 or name of apiKey2
+1. apiKey1 - API key of the source tenant
+2. apiKey2 - API key of the destination tenant
+3. apiKey2ID - ID of apiKey2 or name of apiKey2
 
 ## How to run it on the console
 
-Download the script folder.
-npm install
-node app.js
+1. Download the script folder.
+2. npm install
+3. node app.js
