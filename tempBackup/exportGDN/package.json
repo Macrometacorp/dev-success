@@ -1,0 +1,6 @@
+{
+    "main": "exportDBtoJSON.js",
+    "dependencies": {
+        "jsc8": "^0.17.6-beta.5"
+    }
+}
