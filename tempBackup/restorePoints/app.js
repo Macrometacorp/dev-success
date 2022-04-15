@@ -2,7 +2,7 @@ const jsc8 = require("jsc8");
 
 ///////////////////////////////////// User configuration
 const fabricName = "_system";
-const url = "ps://gdn.paas.macrometa.io/"; //federation URL
+const url = "https://gdn.paas.macrometa.io/"; //federation URL
 const apiKey1 = ""; //API key of source tenant
 const apiKey2 =""; //API key of destination tenant
 const apiKey2ID = ""; //ID of APIkey2/ name of API key
