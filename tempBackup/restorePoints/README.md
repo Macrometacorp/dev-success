@@ -27,8 +27,8 @@ There is two way to user restore fabric:
 ## How to run it on the console
 
 1. Download the script folder.
-2. npm install
-3. node app.js
+2. `npm install`
+3. `node app.js`
 
 # How to restore
 
@@ -41,21 +41,21 @@ fabricName - fabric name of backup Geo Fabric
 apiKey - apiKey of backup GeoFabric, apiKey needs permission to access GF.
 
 ### How to run it on the console
-node recreateIndexesAndGraphs.js
+1. `node recreateIndexesAndGraphs.js`
 
 ## Second approach, restoring data from backup GF to production GF.
 Run the clearFabric.js script, be aware that this script will delete all data on fabric!!!
 Run restoreFromBackupGF.js script; this will clone all data from selected backup GF to production fabric.
 
 ### Config Variables need to be entered in the clearFabric.js script before running:
-apiKey1 
-fabricName
+1. apiKey1 
+2. fabricName
 
 ### Config Variables need to be entered in the restoreFromBackupGF.js script before running:
-backupFabricName
-apiKey1 - apiKey of backup GF
-apiKey2 - apiKey of production GF
+1. backupFabricName
+2. apiKey1 - apiKey of backup GF
+3. apiKey2 - apiKey of production GF
 
 ### How to run it on the console
-node clearFabric.js
-restoreFromBackupGF.js
+1. `node clearFabric.js`
+1. `restoreFromBackupGF.js`
