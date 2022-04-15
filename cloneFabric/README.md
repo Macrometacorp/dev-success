@@ -6,7 +6,8 @@ Supported collections type:
 1. Document
 2. KV
 3. Edge
-Script does not support cloning of DYNAMO collections.
+
+The script does not support the cloning of DYNAMO collections.
 
 Supported type of indexes: 
 1. Fulltext
@@ -14,4 +15,4 @@ Supported type of indexes:
 3. GEO
 4. Persistent
 
-Script support Graph cloning.
+The script support Graphs cloning.
