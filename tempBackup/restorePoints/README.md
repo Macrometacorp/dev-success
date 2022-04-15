@@ -3,6 +3,8 @@
 ## Overview
 Script app.js will create a new GeoFabric on the destination tenant and clone all data and configuration from the source tenant to the destination tenant. This should be a temporary solution for quick backup recovery. This script aims to create production DB clones every day for ten days to quickly recover production DB if necessary. The script is designed for execution once daily. 
 
+Note: This solution is meant to use two accounts; app.js will move fabric from one tenant to another tenant, so two accounts are necessary.
+
 ## Functions:
 1. Create GeoFabric on the destination tenant
 2. Cloning data and configuration of collections 
