@@ -32,12 +32,14 @@ const insertKV = async function () {
   const result = await client.insertKVPairs(collectionName, keyValuePairs);
   console.log(result);
   let time = 1000; //milliseconds
+  let count = 1;
   while (data.length < regions.length) {
-    if (time > 5000) { 
+    if (count < 10) { 
       break;
     }
     await sleep(time);
     time = 500;
+    count++;
     data = (await client.executeRestql("happy", { key: result._key })).result;
     console.log(data);
   }
