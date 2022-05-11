@@ -37,7 +37,7 @@ const insertKV = async function () {
       break;
     }
     await sleep(time);
-    time = time - 500;
+    time = 500;
     data = (await client.executeRestql("happy", { key: result._key })).result;
     console.log(data);
   }
