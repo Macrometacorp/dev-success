@@ -11,4 +11,4 @@ How to run it on the console:
 
 1. Download the script folder.
 2. npm install jsc8
-3. node exportDBtoJSON.js
+3. node app.js
