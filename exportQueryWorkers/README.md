@@ -1,4 +1,4 @@
-Solution for exporting RESTQL from GDN.
+Solution for exporting RESTQL from GDN. This script will create a JSON file with all users' RESTQLs.
 
 Config Variables need to be entered in the script before running:
 
