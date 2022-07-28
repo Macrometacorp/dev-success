@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "jsc8": "^0.17.6-beta.5"
+}
