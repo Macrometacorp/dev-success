@@ -1,5 +1,5 @@
 This script is intended for migration from GDN to PLAY.
-
+Supported collection types : DOC, KV and Edge
 Known limitation:
 1. Local collections are not supported on PLAY, and all doc collections will switch to global
 2. Migration of View is currently not working 
