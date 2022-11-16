@@ -5,11 +5,9 @@ const jsc8 = require("jsc8");
 ///////////////////////////////////// User configuration
 const urlGDN = "https://gdn.paas.macrometa.io/"; //federation URL
 const urlPlay = "https://play.paas.macrometa.io/"; //federation URL
-const apiKeyGDN =
-  "ljubisav.jakovljevic_macrometa.com.test.7z5U0v20cWwUmKhGg5W1A690vO5YQaGBukBEuTJCOAnAveGQ9QrUzQuiBDM1J4vZ52f3a5"; //API key of source account
-const apiKeyPLAY =
-  "TCEGL8b2_RWe8p6oXXgjU-w.testPLAY.xV1jYK89aNUU2cotjCSaBqrSEERvqaL7E4SnWDHi1w2hUFVnRAIXJDi61Bx9d65a62d06f"; //API key of destination account
-const apiKeyPLAY_ID = "testPLAY"; //ID of apiKeyPLAY/ name of API key
+const apiKeyGDN =""; //API key of source account/ GDN API key
+const apiKeyPLAY =""; //API key of destination account/ PLAY API key
+const apiKeyPLAY_ID = ""; //ID of apiKeyPLAY/ name of PLAY API key
 //////////////////////////////////////////
 
 
