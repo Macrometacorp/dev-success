@@ -1,5 +1,7 @@
 This script is intended for migration from GDN to PLAY.
 
+Use this script to migrate the GDN account to an empty PLAY account
+
 Supported collection types : DOC, KV and Edge
 
 Known limitation:
@@ -12,3 +14,5 @@ Steps:
 2. Create an API key on PLAY
 3. Create an API key on GDN and give it access(admin) to all Geofabrics if you have more than one Geofabric
 4. Configure the script
+5. npm install 
+6. node app.js
