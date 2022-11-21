@@ -1,16 +1,14 @@
 const jsc8 = require("jsc8");
 
-
-
 ///////////////////////////////////// User configuration
 const urlGDN = "https://gdn.paas.macrometa.io/"; //federation URL
 const urlPlay = "https://play.paas.macrometa.io/"; //federation URL
-const apiKeyGDN =""; //API key of source account/ GDN API key
-const apiKeyPLAY =""; //API key of destination account/ PLAY API key
-const apiKeyPLAY_ID = ""; //ID of apiKeyPLAY/ name of PLAY API key
+const apiKeyGDN =""; //API key of source account
+const apiKeyPLAY =""; //API key of destination account
+const apiKeyPLAY_ID = "testPLAY"; //ID of apiKeyPLAY/ name of API key
+const apiKeyGDN_ID = "test"; //ID of apiKeyPLAY/ name of API key
+
 //////////////////////////////////////////
-
-
 let fabricName = "";
 
 //Connection to source and destination tenant
@@ -35,19 +33,20 @@ const sleep = (milliseconds) => {
 const createGF = async function () {
   if (fabricName != "_system") {
     try {
-      const data = await clientPlay.getAllEdgeLocations();
+      const data = await clientGDN.get();
       let locations = "";
-      for (let i of data) {
-        locations = locations + "," + i._key;
+      for (let i of data.options.associated_regions) {
+        locations = locations + "," + i.replace("gdn", "play");
       }
+      locations = locations.replace("sydney", "southeast");
+      clientPlay.useFabric("_system");
       const info = await clientPlay.createFabric(fabricName, ["root"], {
         dcList: locations.slice(1),
       });
+
       await clientPlay.setDatabaseAccessLevel(apiKeyPLAY_ID, fabricName, "rw");
-      // await clientPlay.setCollectionAccessLevel(apiKeyPLAY_ID, "*", "rw");
       clientPlay.useFabric(fabricName);
       console.log("GeoFabric is created!");
-      await sleep(2000);
     } catch (e) {
       console.log(e);
       console.log(
@@ -226,6 +225,7 @@ const cloneGraph = async function () {
 const cloneRestqls = async function () {
   try {
     const listOfCreatedRestql = await clientGDN.getRestqls();
+    console.log(listOfCreatedRestql);
     for (let i of listOfCreatedRestql.result) {
       await clientPlay.createRestql(i.name, i.value);
     }
@@ -311,6 +311,9 @@ const runInSeries = async () => {
     console.log(`Cloning "${i}" fabric started`);
 
     fabricName = i;
+    clientGDN.useFabric("_system");
+    await clientGDN.setDatabaseAccessLevel(apiKeyGDN_ID, fabricName, "rw");
+
     clientGDN.useFabric(i);
     for (const fn of list) {
       await fn(); // call function to get returned Promise
