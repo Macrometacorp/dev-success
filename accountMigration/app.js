@@ -225,7 +225,7 @@ const cloneGraph = async function () {
 const cloneRestqls = async function () {
   try {
     const listOfCreatedRestql = await clientGDN.getRestqls();
-    console.log(listOfCreatedRestql);
+   // console.log(listOfCreatedRestql);
     for (let i of listOfCreatedRestql.result) {
       await clientPlay.createRestql(i.name, i.value);
     }
